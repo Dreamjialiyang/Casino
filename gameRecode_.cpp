@@ -1,96 +1,168 @@
 #include <bits/stdc++.h>
 using namespace std;
-int money=100;//Íæ¼ÒÇ®Êı 
-int gamechose;//Ñ¡ÔñÍæ·¨ 
+int money=100;//ç©å®¶é’±æ•° 
+int gamechose;//é€‰æ‹©ç©æ³• 
 
-int Check()//¼ì²éÊäÈëÊÇ·ñÎªÊı×Ö 
+int Check()//æ£€æŸ¥è¾“å…¥æ˜¯å¦ä¸ºæ•°å­— 
 {
     int choice;
     while(true)
     {
         cin>>choice;
-        //¼ì²éÊäÈëÊÇ·ñÓĞĞ§
+        //æ£€æŸ¥è¾“å…¥æ˜¯å¦æœ‰æ•ˆ
         if(cin.fail())
         {
-            cin.clear();//Çå³ı´íÎó±êÖ¾
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');//¶ªÆúÎŞĞ§ÊäÈë
-            cout<<"ÊäÈëÎŞĞ§£¬ÇëÊäÈëÊı×Ö£¡"<<endl;
-            continue;//ÖØĞÂ¿ªÊ¼Ñ­»·
+            cin.clear();//æ¸…é™¤é”™è¯¯æ ‡å¿—
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');//ä¸¢å¼ƒæ— æ•ˆè¾“å…¥
+            cout<<"è¾“å…¥æ— æ•ˆï¼Œè¯·è¾“å…¥æ•°å­—ï¼"<<endl;
+            continue;//é‡æ–°å¼€å§‹å¾ªç¯
         }
-        return choice;//ÓĞĞ§Ñ¡Ôñ
+        return choice;//æœ‰æ•ˆé€‰æ‹©
     }
 }
 
-int xianshi()//Ö÷Ò³Ãæ
+int xianshi()//ä¸»é¡µé¢
 {
-    cout<<"1 - ²ÂÊı×Ö¶Ä²©ÓÎÏ·£¨ÏÂ×¢ \$10£©\n";
-    cout<<"2 - Ê¯Í·¼ôµ¶²¼¶Ä²©ÓÎÏ·£¨ÏÂ×¢ \$6£©\n";
-    cout<<"ÊäÈëÄãµÄÑ¡Ôñ£¨1¡¢2¡¢3¡¢4 »ò 666£©£º";
-    return Check();//Ö±½Ó·µ»Ø Check() µÄ½á¹û
+    cout<<"1 - çŒœæ•°å­—èµŒåšæ¸¸æˆï¼ˆä¸‹æ³¨ \$10ï¼‰\n";
+    cout<<"2 - çŸ³å¤´å‰ªåˆ€å¸ƒèµŒåšæ¸¸æˆï¼ˆä¸‹æ³¨ \$6ï¼‰\n";
+    cout<<"è¾“å…¥ä½ çš„é€‰æ‹©ï¼ˆ1ã€2ï¼‰ï¼š";
+    return Check();//ç›´æ¥è¿”å› Check() çš„ç»“æœ
 } 
-
-void guessNumberGame()
+//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” 
+void guessNumberGame() 
 {
+	string a;//è¿”å›ä¸»é¡µ 
 	int number,guess;
     system("cls");
     int NumberMoney;
-    const int minBet=10;//ÏÂ¶Ä×îµÍ½ğ¶î 
-    cout<<"»¶Ó­À´µ½²ÂÊı×Ö¶Ä²©ÓÎÏ·£¡ÖĞ½±¸ÅÂÊÉèÎª 12.5%£¡\n";
-
+    const int minBet=10;//ä¸‹èµŒæœ€ä½é‡‘é¢ 
+    cout<<"æ¬¢è¿æ¥åˆ°çŒœæ•°å­—èµŒåšæ¸¸æˆï¼ä¸­å¥–æ¦‚ç‡è®¾ä¸º 12.5%ï¼\n";
     while(true)
     {
-        cout<<"ÄãµÄµ±Ç°Óà¶îÊÇ£º" <<money<<"\n";
+        cout<<"ä½ çš„å½“å‰ä½™é¢æ˜¯ï¼š" <<money<<"\n";
         if(money<minBet)
         {
-            string a;
-            cout<<"Óà¶î²»×ã£¬ÎŞ·¨¼ÌĞøÓÎÏ·¡£ÊäÈëback·µ»ØÖ÷Ò³Ãæ½øĞĞ³äÖµ»ò´û¿î£¡\n";
+            cout<<"ä½™é¢ä¸è¶³ï¼Œæ— æ³•ç»§ç»­æ¸¸æˆã€‚è¾“å…¥backè¿”å›ä¸»é¡µé¢è¿›è¡Œå……å€¼æˆ–è´·æ¬¾ï¼\n";
             cin>>a;
             if(a=="back")
             {
                 system("cls"); 
                 xianshi();
             }
+            else
+            	continue;
         }
 
-        cout<<"ÇëÊäÈëÏÂ×¢½ğ¶î£¨ÖÁÉÙ \$10£©£º";
-        cin>>NumberMoney;//Òª¶ÄµÄÇ®
+        cout<<"è¯·è¾“å…¥ä¸‹æ³¨é‡‘é¢ï¼ˆè‡³å°‘ \$10ï¼‰ï¼š";
+        cin>>NumberMoney;//è¦èµŒçš„é’±
         if(NumberMoney<minBet)
         {
-            cout<<"ÏÂ×¢½ğ¶î²»ÄÜÉÙÓÚ \$10£¬ÇëÖØĞÂÊäÈë¡£\n";
+            cout<<"ä¸‹æ³¨é‡‘é¢ä¸èƒ½å°‘äº $10ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚\n";
             continue;
         }
-        //ÏÂ×¢Âß¼­
-        number=rand()%8+1;//Éú³É1µ½8Ö®¼äµÄËæ»úÊı 
-        bool GuessSuccess=false;//±ê¼ÇÊÇ·ñ²ÂÖĞ
-        for(int i=1;i<=3;i++)
+        //ä¸‹æ³¨é€»è¾‘
+        number=rand()%8+1;//ç”Ÿæˆ1åˆ°8ä¹‹é—´çš„éšæœºæ•° 
+        bool GuessSuccess=false;//æ ‡è®°æ˜¯å¦çŒœä¸­
+        for(int i=0;i<3;i++)
         {
-        	cout<<"Çë²ÂÒ»¸öÊı×Ö£¨1-8£©£¬Äã»¹ÓĞ "<<3-i<<" ´Î»ú»á£º";
-        	cin>>guess;
+        	cout<<"è¯·çŒœä¸€ä¸ªæ•°å­—ï¼ˆ1-8ï¼‰ï¼Œä½ è¿˜æœ‰ "<<3-i<<" æ¬¡æœºä¼šï¼š";
         	Check();
 			if(guess==number)
 			{
-				GuessSuccess=true;//²ÂÖĞ
-				money+=bet*2;//½±½ğ·­±¶
-				cout<<"¹§Ï²Äã£¡Äã²Â¶ÔÁË£¡ÄãÓ®µÃÁË $"<<bet*2<<"¡£\n";
-				break;//²ÂÖĞºóÍË³öÑ­»·
+				GuessSuccess=true;//çŒœä¸­
+				money+=NumberMoney*2;//å¥–é‡‘ç¿»å€
+				cout<<"æ­å–œä½ ï¼ä½ çŒœå¯¹äº†ï¼ä½ èµ¢å¾—äº† $"<<NumberMoney*2<<"ã€‚\n";
+				break;//çŒœä¸­åé€€å‡ºå¾ªç¯
 			}
 			else
-				cout<<"ºÜÒÅº¶£¬Äã²Â´íÁË¡£\n";
- 
+				cout<<"å¾ˆé—æ†¾ï¼Œä½ çŒœé”™äº†ã€‚\n";
 		}
+		if(!GuessSuccess)
+		{
+			money-=NumberMoney;//æ‰€æœ‰æœºä¼šç”¨å®Œä¸”æœªçŒœä¸­ï¼Œæ‰£é™¤ä¸‹æ³¨é‡‘é¢
+			std::cout<<"ä½ æ²¡æœ‰çŒœä¸­ï¼Œå¤±å»äº† $"<<NumberMoney<<"ã€‚\n";
+		} 
+		cout<<"è¾“å…¥ä»»æ„è¿”å›ä¸»é¡µé¢\n";
+		cin>>a; 
+        if(a=="j"){system("cls"); xianshi();}
+        else{system("cls"); xianshi();}
     }
 }
-
+//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” 
 void sjb()
 {
+	string a;//è¿”å›ä¸»é¡µ 
+	system("cls");
+	int NumberMoney;
+	string s[3]={"çŸ³å¤´","å‰ªåˆ€","å¸ƒ"};//ä¸‰ä¸ªé€‰æ‹©
+	int minBet=6;//çŸ³å¤´å‰ªåˆ€å¸ƒæ¸¸æˆçš„æœ€ä½ä¸‹æ³¨é‡‘é¢ 
+	cout<<"æ¬¢è¿æ¥åˆ°çŸ³å¤´å‰ªåˆ€å¸ƒèµŒåšæ¸¸æˆï¼\n";
+	for(int i=0;i<2;i++)
+	{
+		cout<<"ä½ çš„å½“å‰ä½™é¢æ˜¯ï¼š"<<money<<"\n";
+		if(money<minBet)
+        {
+            cout<<"ä½™é¢ä¸è¶³ï¼Œæ— æ³•ç»§ç»­æ¸¸æˆã€‚è¾“å…¥backè¿”å›ä¸»é¡µé¢è¿›è¡Œå……å€¼æˆ–è´·æ¬¾ï¼\n";
+            cin>>a;
+            if(a=="back")
+            {
+                system("cls"); 
+                xianshi();
+            }
+            else
+            	continue;
+        }
+        cout<<"è¯·è¾“å…¥ä¸‹æ³¨é‡‘é¢ï¼ˆè‡³å°‘ $6ï¼‰ï¼š";
+        Check();
+        if(NumberMoney<minBet)
+        {
+            cout<<"ä¸‹æ³¨é‡‘é¢ä¸èƒ½å°‘äº $6ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚\n";
+            continue;
+        }
+		int PlayerChose;
+		cout<<"è¯·é€‰æ‹©ï¼š\n";
+		cout<<"0 - çŸ³å¤´\n";
+		cout<<"1 - å‰ªåˆ€\n";
+		cout<<"2 - å¸ƒ\n";
+		cout<<"è¾“å…¥ä½ çš„é€‰æ‹©ï¼ˆ0-2ï¼‰ï¼š";
+		if(PlayerChose<0 || PlayerChose>2)
+		{
+			cout<<"æ— æ•ˆé€‰æ‹©ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚\n";
+			continue;
+		}
+		Check();
+		int ComputerChose=rand()%3;
+		cout<<"ä½ é€‰æ‹©äº†ï¼š"<<s[PlayerChose]<<"\n";
+		cout<<"è®¡ç®—æœºé€‰æ‹©äº†ï¼š"<<s[ComputerChose]<<"\n";
+		//åˆ¤æ–­é€»è¾‘
+		if(PlayerChose==ComputerChose)
+		{
+			cout<<"å¹³å±€ï¼\n";
+			cout<<"ä½ çš„ä¸‹æ³¨é‡‘é¢ä¿æŒä¸å˜ã€‚\n";
+		}
+		else if((PlayerChose==0 && ComputerChose==1) || 
+		        (PlayerChose==1 && ComputerChose==2) || 
+				(PlayerChose==2 && ComputerChose==0)) 
+		{
+			cout<<"ä½ èµ¢äº†ï¼\n";
+			money+=NumberMoney; // èµ¢å¾—ä¸‹æ³¨é‡‘é¢
+			cout<<"ä½ è·å¾—äº† $"<<NumberMoney<<"ã€‚\n";
+		}
+		else
+		{
+			cout<<"ä½ è¾“äº†ï¼\n";
+			money-=NumberMoney;//å¤±å»ä¸‹æ³¨é‡‘é¢
+			cout<<"ä½ å¤±å»äº† $"<<NumberMoney<<"ã€‚\n";
+		}
+	}
 }
 
 int main()
 {
     while(true)
     {
-        gamechose=xianshi(); //È¡ÓÃ»§Ñ¡Ôñ²¢¸³Öµ
-        // ¾İ²»Í¬Ñ¡Ôñµ÷ÓÃÏàÓ¦µÄº¯Êı
+        gamechose=xianshi(); //å–ç”¨æˆ·é€‰æ‹©å¹¶èµ‹å€¼
+        // æ®ä¸åŒé€‰æ‹©è°ƒç”¨ç›¸åº”çš„å‡½æ•°
         if(gamechose==1)
         {
             guessNumberGame();
@@ -103,4 +175,3 @@ int main()
 
     return 0;
 }
-
