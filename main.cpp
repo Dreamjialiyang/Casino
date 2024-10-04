@@ -6,12 +6,12 @@ void guessNumberGame(int& balance) {
 	const int minBet = 10; // 猜数字游戏的最低下注金额
 	int bet, guess, number;
 	
-	std::cout << "欢迎来到猜数字赌博游戏！中奖概率设为 12.5%！\n";
+	std::cout << "欢迎来到猜数字赌博游戏！中奖概率设为 12.5%！\n\n";
 	
 	while (true) {
 		std::cout << "你的当前余额是：" << balance << "\n";
 		if (balance < minBet) {
-			std::cout << "余额不足，无法继续游戏。请充值！\n";
+			std::cout << "余额不足，无法继续游戏。请充值！\n\n";
 			break;
 		}
 		
@@ -125,6 +125,14 @@ void rockPaperScissorsGame(int& balance) {
 			std::cout << "你失去了 $" << bet << "。\n\n";
 		}
 		
+		// 在游戏结束后询问是否继续猜测
+		char choice;
+		std::cout << "你想继续猜测吗？（y/n）：";
+		std::cin >> choice;
+		if (choice == 'n' || choice == 'N') {
+			break; // 退出猜数字游戏
+		}
+		
 		if (balance >= 50000) { // 检查是否达到赌场价值
 			std::cout << "恭喜你！你已经积累了足够的资金买下赌场！游戏通过！\n\n";
 			break;
@@ -180,7 +188,13 @@ void payLoan(int& balance, int& loan) {
 }
 
 void tempJob(int& balance) {
-	// 打临时工的代码（如上文所示）
+	// 30% 概率找不到工作
+	if (rand() % 100 < 30) {
+		std::cout << "很遗憾，你没有找到工作。\n\n";
+	} else {
+		balance += 70; // 找到工作，增加余额
+		std::cout << "恭喜你！你找到工作，获得了 $70。\n\n";
+	}
 }
 
 int main() {
